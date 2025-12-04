@@ -1,1 +1,4 @@
-# the rest goes here! 
+# défini toutes les services (images docker) qu'on va faire tourner
+
+services:  
+  # on initialise d'abord la BDD parce que le backend en depend
