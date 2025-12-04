@@ -1,4 +1,31 @@
 # défini toutes les services (images docker) qu'on va faire tourner
 
 services:  
-  # on initialise d'abord la BDD parce que le backend en depend
+  
+      database: # on initialise d'abord la BDD parce que le backend en depend
+        image: postgres:13
+        volumes:
+          - db-data:/var/lib/postgresql/data
+        environment:
+          - POSTGRES_PASSWORD=logmein123
+          - POSTGRES_DB=log_db
+
+
+
+        backend:  # Backend flask construit a partir du dockerfile
+          build:
+            context: ./backend
+          depends_on: database
+            
+        
+        
+        web:  
+          build: ./frontend
+          ports:
+            - "3000:3000"
+          environment:
+            - DB_HOST=database
+          depends_on:
+            - database
+  
+  
