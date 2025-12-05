@@ -13,7 +13,7 @@ services:
 
 
 
-  backend:  # Déploiement du Backend "flask" construit à partir du dockerfile
+  backend:  # Déploiement du Backend "flask" construit à partir du dockerfile.
           build:
             context: ./backend
           depends_on:
