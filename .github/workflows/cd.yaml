@@ -8,6 +8,11 @@ on:
 
 jobs:
   build:
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }} # Only run if the CI pipeline has passed
     steps:
@@ -56,6 +61,7 @@ jobs:
           subject-name: index.docker.io/el7s1a/simple-monitoring
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 
 
 
