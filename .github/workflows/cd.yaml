@@ -44,8 +44,8 @@ jobs:
       - name: Build and push Docker frontend
         uses: docker/build-push-action@v4
         with:
-          context: /LogMeIn/simple-monitoring/frontend/
-          file: ./Dockerfile
+          context: ./LogMeIn/simple-monitoring/frontend/
+          file: Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -56,6 +56,7 @@ jobs:
           subject-name: index.docker.io/el7s1a/simple-monitoring
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 
 
 
