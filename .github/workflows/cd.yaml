@@ -1,21 +1,30 @@
+name: CD pipeline
 
-name: CD Pipeline
 on:
   workflow_run:
-    workflows: ["CI Pipeline"]
+    workflows: ["CI pipeline"]  # Name of our CI workflow
     types:
-      - completed
+      - completed # Only run if the CI pipeline has completed
+
 jobs:
-  deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} # Only run if the CI pipeline has passed
     steps:
-      - name: Login Docker
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Build & Push
-        run: |
-         # docker build -t el7s1a/simple-monitoring:latest LogMeIn/LogMeIn/simple-monitoring/
-          docker push el7s1a/simple-monitoring:latest
+      - name: Log in to Docker Hub
+        uses: docker/login-action@6d4b68b490aef8836e8fb5e50ee7b3bdfa5894f0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: el7s1a/simple-monitoring
