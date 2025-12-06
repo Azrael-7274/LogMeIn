@@ -26,9 +26,9 @@ jobs:
         with:
           context: ./LogMeIn/simple-monitoring
           file: ./backend/Dockerfile
-          file: ./frontend/Dockerfile
           push: true
           tags: el7s1a/simple-monitoring
+
 
 
 
