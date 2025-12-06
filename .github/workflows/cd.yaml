@@ -30,13 +30,13 @@ jobs:
           tags: el7s1a/simple-monitoring
 
       - name: Build and push Docker frontend
-        id: push
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
           tags: el7s1a/simple-monitoring
+
 
 
 
