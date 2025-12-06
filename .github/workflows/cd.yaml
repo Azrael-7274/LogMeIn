@@ -28,3 +28,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: el7s1a/simple-monitoring
+
