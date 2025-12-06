@@ -32,7 +32,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./
           file: ./backend/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -44,7 +44,7 @@ jobs:
       - name: Build and push Docker frontend
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./
           file: ./frontend/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -56,6 +56,7 @@ jobs:
           subject-name: index.docker.io/el7s1a/simple-monitoring
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 
 
 
