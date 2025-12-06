@@ -20,22 +20,43 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: el7s1a/simple-monitoring
+
+
       - name: Build and push Docker backend
         id: push
         uses: docker/build-push-action@v4
         with:
-          context: ./
+          context: .
           file: ./backend/Dockerfile
           push: true
-          tags: el7s1a/simple-monitoring
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
+      
+   
+          
       - name: Build and push Docker frontend
         uses: docker/build-push-action@v4
         with:
-          context: ./
+          context: .
           file: ./frontend/Dockerfile
           push: true
-          tags: el7s1a/simple-monitoring
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-name: index.docker.io/el7s1a/simple-monitoring
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
 
 
 
