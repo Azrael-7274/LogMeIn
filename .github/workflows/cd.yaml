@@ -15,6 +15,7 @@ jobs:
 
       - name: Build & Push
         run: |
-          docker build -t el7s1a/simple-monitoring:latest LogMeIn/LogMeIn/simple-monitoring/
+         # docker build -t el7s1a/simple-monitoring:latest LogMeIn/LogMeIn/simple-monitoring/
           docker push el7s1a/simple-monitoring:latest
+
 
