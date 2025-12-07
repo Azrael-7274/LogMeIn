@@ -31,5 +31,5 @@ jobs:
 
       - name: Build Docker images for LogMeIn app
         run: |
-          cd LogMeIn/simple-monitoring/backend
+          cd LogMeIn/simple-monitoring/
           docker-compose build
