@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 RUN apt update && apt upgrade -y 
-COPY requirements.txt .
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r ./requirements.txt
 
 COPY . .
