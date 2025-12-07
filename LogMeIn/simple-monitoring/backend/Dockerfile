@@ -2,6 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+RUN pip install --upgrade pip
 RUN apt update && apt upgrade -y 
 COPY requirements.txt ./backend/
 RUN pip install --no-cache-dir -r requirements.txt
