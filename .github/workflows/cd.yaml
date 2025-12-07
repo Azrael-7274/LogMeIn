@@ -30,8 +30,8 @@ jobs:
         id: push
         uses: docker/build-push-action@14487ce63c7a62a4a324b0bfb37086795e31c6c1
         with:
-          context: .
-          file: ./LogMeIn/simple-monitoring/docker-compose.yaml
+          context: ./backend
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -42,6 +42,7 @@ jobs:
           subject-name: index.docker.io/el7s1a/simple-monitoring
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 
 
 
