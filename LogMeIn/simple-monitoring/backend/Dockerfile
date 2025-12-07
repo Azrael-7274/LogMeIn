@@ -3,7 +3,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 RUN apt update && apt upgrade -y 
-COPY ./backend/requirements.txt
+COPY requirements.txt ./backend/
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
