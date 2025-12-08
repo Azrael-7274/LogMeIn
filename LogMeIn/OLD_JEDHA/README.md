@@ -12,7 +12,7 @@
 ## 📁 Structure
 
 ```
-app/
+simple-monitoring/
 ├── backend/
 │   ├── app.py              # Flask API with PostgreSQL
 │   ├── requirements.txt    # Python dependencies
