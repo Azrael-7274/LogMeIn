@@ -16,13 +16,14 @@ simple-monitoring/
 ├── backend/
 │   ├── app.py              # Flask API with PostgreSQL
 │   ├── requirements.txt    # Python dependencies
-│   └── Dockerfile          # TODO: create Dockerfile for the backend
+│   └── Dockerfile          # Dockerfile for the backend
 ├── frontend/
 │   ├── index.html          # Web interface
 │   ├── style.css           # Styles
 │   ├── script.js           # Frontend logic
+│   ├── nginx.conf          # Configuration file for Nginx
 │   └── Dockerfile          # Dockerfile for the frontend is already created
-├── docker-compose.yml      # TODO: create docker-compose file
+├── docker-compose.yml      # Docker-compose file
 └── README.md
 ```
 
