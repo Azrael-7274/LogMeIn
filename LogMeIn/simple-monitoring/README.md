@@ -12,17 +12,18 @@
 ## 📁 Structure
 
 ```
-app/
+simple-monitoring/
 ├── backend/
 │   ├── app.py              # Flask API with PostgreSQL
 │   ├── requirements.txt    # Python dependencies
-│   └── Dockerfile          # TODO: create Dockerfile for the backend
+│   └── Dockerfile          # Backend logic
 ├── frontend/
 │   ├── index.html          # Web interface
 │   ├── style.css           # Styles
 │   ├── script.js           # Frontend logic
+│   ├── nginx.conf          # Nginx Configuration file
 │   └── Dockerfile          # Dockerfile for the frontend is already created
-├── docker-compose.yml      # TODO: create docker-compose file
+├── docker-compose.yml      builds the container
 └── README.md
 ```
 
